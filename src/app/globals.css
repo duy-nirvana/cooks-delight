@@ -2,12 +2,14 @@
 
 :root {
   --background: #f0ebe1;
+  --primary: #f0ebe1;
   --foreground: #171717;
 }
 
 @theme {
-  --color-gray: #262522;
-  --color-orange: #EE6352;
+  --color-dark: rgb(38, 37, 34);
+  --color-primary: var(--background);
+  --color-orange: #ee6352;
 }
 
 @theme inline {
@@ -15,6 +17,22 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  h1 {
+    @apply font-extrabold text-7xl leading-[100%] tracking-[-1%];
+  }
+}
+
+@layer utilities {
+  .button-text {
+    @apply text-sm font-medium;
+  }
+
+  .small-text {
+    @apply text-xs font-medium;
+  }
 }
 
 body {

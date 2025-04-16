@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const roboto = Roboto({
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700", "800"],
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
@@ -23,10 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased`}>
-        <Header />
-        {children}
-        <Footer />
+      <body className={`${roboto.className} antialiased flex justify-center`}>
+        <div className="container">
+          <Header />
+          <div className="mt-8 mb-4">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
