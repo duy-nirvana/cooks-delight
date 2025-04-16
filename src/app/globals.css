@@ -33,6 +33,10 @@
   .small-text {
     @apply text-xs font-medium;
   }
+
+  .paragraph-1 {
+    @apply text-[21px] leading-[140%] tracking-[-1%];
+  }
 }
 
 body {
