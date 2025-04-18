@@ -10,6 +10,9 @@
   --color-dark: rgb(38, 37, 34);
   --color-primary: var(--background);
   --color-orange: #ee6352;
+  --color-yellow: #f29c33;
+  --color-sky: #c4e5fc;
+  --color-lemon: #9fdc26;
 }
 
 @theme inline {
@@ -21,8 +24,23 @@
 
 @layer base {
   h1 {
-    @apply font-extrabold text-7xl leading-[100%] tracking-[-1%];
+    @apply font-extrabold lg:text-7xl text-4xl leading-[100%] tracking-[-1%];
   }
+
+  h2 {
+    @apply font-bold lg:text-[40px] text-[26px] leading-[100%] tracking-[-1%];
+  }
+
+  h3 {
+    @apply font-bold lg:text-2xl text-[21px] leading-[120%] tracking-[-1%];
+  }
+
+  button {
+    @apply cursor-pointer transition-all relative overflow-hidden rounded-full;
+  }
+  /* button:after {
+    @apply content-[''] absolute inset-0 bg-dark/10 hover:bg-dark/100 rounded-full z-10;
+  } */
 }
 
 @layer utilities {
@@ -33,9 +51,37 @@
   .small-text {
     @apply text-xs font-medium;
   }
+  .subtitle {
+    @apply text-lg tracking-[2%] font-semibold;
+  }
 
   .paragraph-1 {
-    @apply text-[21px] leading-[140%] tracking-[-1%];
+    @apply lg:text-[21px] text-base leading-[140%] tracking-[-1%];
+  }
+  .paragraph-2 {
+    @apply lg:text-base text-sm leading-[140%] tracking-[-1%] font-light;
+  }
+}
+
+@layer components {
+  .vegan {
+    @apply relative;
+  }
+  .vegan:after {
+    background: var(--color-lemon);
+    content: "123";
+
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+    transform: translateY(35%);
+
+
+    width: 64px;
+    height: 64px;
+    border-radius: 100%;
+
+    
   }
 }
 
