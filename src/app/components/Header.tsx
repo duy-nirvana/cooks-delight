@@ -1,9 +1,42 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
 function Header({}) {
+  const [hasScrolled, setHasScrolled] = useState<Boolean>(false);
+
+  useEffect(() => {
+    if (window.scrollY > 80) {
+      setHasScrolled(true);
+    }
+
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        setHasScrolled(true);
+      } else {
+        setHasScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-4 left-0 z-50 flex justify-center">
-      <div className="container p-4 border border-dark/24 rounded-4xl bg-primary flex justify-between items-center">
+    <header
+      className={twMerge(
+        "sticky top-4 left-0 z-50 flex justify-center",
+        hasScrolled && "top-0"
+      )}
+    >
+      <div
+        className={twMerge(
+          "container p-4 border border-dark/24 rounded-4xl bg-primary flex justify-between items-center transition-colors",
+          hasScrolled &&
+            "bg-white/70 backdrop-blur-lg border-none shadow-lg rounded-t-none"
+        )}
+      >
         <div className="flex gap-2 items-center">
           <img src="/logo/main.svg" />
           <p className="font-bold leading-4">
